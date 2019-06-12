@@ -1,0 +1,34 @@
+<h4>{{knowledge.name}}</h4>
+<p>
+  <span *ngFor="let t of knowledge.tags">{{t}}</span>
+</p>
+<ul>
+  <li>spirit(which I think the most important): {{knowledge.spirit}}</li>
+  <li>background: {{knowledge.background}}</li>
+  <li>motivation: {{knowledge.motivation}}</li>
+  <li>pros:
+    <ul>
+      <li *ngFor="let p of knowledge.pros">{{p}}</li>
+    </ul>
+  </li>
+  <li>cons:
+    <ul>
+      <li *ngFor="let c of knowledge.cons">{{c}}</li>
+    </ul>
+  </li>
+  <li>components:
+    <ul>
+      <li *ngFor="let c of knowledge.components">{{c}}</li>
+    </ul>
+  </li>
+  <li>alternatives:
+    <ul>
+      <li *ngFor="let c of knowledge.alternatives">{{c}}</li>
+    </ul>
+  </li>
+  <li>references:
+    <ol>
+      <li *ngFor="let r of knowledge.references">{{r}}</li>
+    </ol>
+  </li>
+</ul>
