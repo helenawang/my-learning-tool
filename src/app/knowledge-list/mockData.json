@@ -1,0 +1,26 @@
+{
+  "knowledgeList": [
+    {
+      "name": "Java Annotation",
+      "tags": [
+        "java",
+        "metadata"
+      ],
+      "spirit": "metadata?",
+      "background": "",
+      "motivation": "",
+      "pros": [
+        "coupled closely with code(compared to XML)[1]",
+        "defines a standard way of defining metadata in code[1]"
+      ],
+      "cons": [],
+      "components": [],
+      "alternatives": [
+        "XML(scenario: application wide constants/parameters)"
+      ],
+      "references": [
+        "https://dzone.com/articles/how-annotations-work-java"
+      ]
+    }
+  ]
+}

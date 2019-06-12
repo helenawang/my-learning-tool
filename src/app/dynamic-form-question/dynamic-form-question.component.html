@@ -1,0 +1,19 @@
+<div [formGroup]="form">
+  <label [attr.for]="question.key">{{question.label}}</label>
+
+  <div [ngSwitch]="question.controlType">
+    <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
+      [id]="question.key" [type]="question.type">
+
+    <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key">
+      <option *ngFor="let opt of question.options" [value]="opt.key">
+        {{opt.value}}
+      </option>
+    </select>
+    <!-- 如果要添加其他类型，需要在这里写？-->
+    <textarea *ngSwitchCase="'textarea'" [formControlName]="question.key"
+              [id]="question.key"></textarea>
+  </div>
+
+  <div class="error-message" *ngIf="!isValid">{{question.label}}</div>
+</div>
