@@ -1,16 +1,20 @@
-<div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div *ngFor="let q of questions" class="form-row">
-      <app-dynamic-form-question [question]="q" [form]="form"></app-dynamic-form-question>
+<div nz-row>
+  <form nz-form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div nz-col nzSpan="18">
+      <div *ngFor="let q of questions" class="form-row">
+        <app-dynamic-form-question [question]="q" [form]="form"></app-dynamic-form-question>
+      </div>
     </div>
 
-    <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
+    <div nz-col nzSpan="6">
+      <button nz-button nzType="primary" type="submit" [disabled]="!form.valid">Save</button>
+      <div *ngIf="payLoad" class="form-row">
+        <nz-alert
+          nzType="success"
+          nzMessage="Saved the following values"
+          nzDescription={{payLoad}}
+        ></nz-alert>
+      </div>
     </div>
   </form>
-
-  <div *ngIf="payLoad" class="form-row">
-    <strong>Saved the following values</strong><br/>
-    {{payLoad}}
-  </div>
 </div>

@@ -3,6 +3,7 @@ import {QuestionBase} from './model/question-base';
 import {QuestionTextbox} from './model/question-textbox';
 import {QuestionTextarea} from './model/question-textarea';
 import {QuestionSettings} from './model/Knowledge';
+import {QuestionTags} from './model/question-tags';
 
 @Injectable()
 export class QuestionService {
@@ -18,6 +19,11 @@ export class QuestionService {
         });
       case 'textarea':
         return new QuestionTextarea({
+          key: name, label: name,
+          required: !!required
+        });
+      case 'tags':
+        return new QuestionTags({
           key: name, label: name,
           required: !!required
         });

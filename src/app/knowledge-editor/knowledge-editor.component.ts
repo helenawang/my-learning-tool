@@ -10,6 +10,7 @@ import {QuestionService} from '../question.service';
 })
 export class KnowledgeEditorComponent implements OnInit {
   questions: any[];
+  fileList: [] = [];
   constructor(private formBuilder: FormBuilder, qs: QuestionService) {
     this.questions = QuestionService.getQuestionsFromSetting();
   }

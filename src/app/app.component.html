@@ -1,2 +1,11 @@
-<h1>Welcome to {{title}}</h1>
-<router-outlet></router-outlet>
+<nz-layout class="layout">
+  <nz-header>
+    <div class="logo"></div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+      <li nz-menu-item *ngFor="let item of firstNavs"><a routerLink={{item.routerLink}}>{{item.name}}</a></li>
+    </ul>
+  </nz-header>
+  <nz-content style="padding:0 50px;">
+    <router-outlet></router-outlet>
+  </nz-content>
+</nz-layout>

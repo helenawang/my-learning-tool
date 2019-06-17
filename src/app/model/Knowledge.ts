@@ -13,7 +13,7 @@ export interface Knowledge {
 // 对于问题项的配置
 export const QuestionSettings = [
   {type: 'textbox', name: 'name', required: true},
-  {type: 'textbox', name: 'tags'},
+  {type: 'tags', name: 'tags'},
   {type: 'textbox', name: 'spirit'},
   {type: 'textarea', name: 'background'},
   {type: 'textarea', name: 'motivation'},

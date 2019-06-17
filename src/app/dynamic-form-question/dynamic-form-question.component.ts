@@ -10,6 +10,7 @@ import {FormGroup} from '@angular/forms';
 export class DynamicFormQuestionComponent implements OnInit {
   @Input() question: QuestionBase<any>;
   @Input() form: FormGroup;
+  listOfTagOptions = null;
   constructor() { }
 
   get isValid() {

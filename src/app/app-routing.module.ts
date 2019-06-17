@@ -7,10 +7,10 @@ import {KnowledgeListComponent} from './knowledge-list/knowledge-list.component'
 import {KnowledgeEditorComponent} from './knowledge-editor/knowledge-editor.component';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'knowledgeForm-editor', pathMatch: 'full'},
+  {path: '', redirectTo: 'knowledge-editor', pathMatch: 'full'},
   {path: 'virtual-table', component: VirtualTableComponent},
-  {path: 'knowledgeForm-list', component: KnowledgeListComponent},
-  {path: 'knowledgeForm-editor', component: KnowledgeEditorComponent}
+  {path: 'knowledge-list', component: KnowledgeListComponent},
+  {path: 'knowledge-editor', component: KnowledgeEditorComponent}
 ];
 
 @NgModule({
