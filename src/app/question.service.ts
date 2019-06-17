@@ -1,79 +1,37 @@
 import {Injectable} from '@angular/core';
 import {QuestionBase} from './model/question-base';
-import {QuestionDropdown} from './model/question-dropdown';
 import {QuestionTextbox} from './model/question-textbox';
 import {QuestionTextarea} from './model/question-textarea';
+import {QuestionSettings} from './model/Knowledge';
 
 @Injectable()
 export class QuestionService {
   // TODO get from a remote source of question metadata
   // TODO make asynchronous
-  static getQuestions() {
-    const nameTextbox = new QuestionTextbox({
-      key: 'name',
-      label: 'name',
-      required: true
-    });
-    const tagsTextbox = new QuestionTextbox({
-      key: 'tags',
-      label: 'tags',
-    });
-    const spiritTextbox = new QuestionTextbox({
-      key: 'spirit',
-      label: 'spirit'
-    });
-    const background = new QuestionTextarea({
-      key: 'background',
-      label: 'background'
-    });
-    const motivation = new QuestionTextarea({
-      key: 'motivation',
-      label: 'motivation'
-    }); // TODO 我觉得这种最好做成列表式输入
-    const pros = new QuestionTextarea({
-      key: 'pros',
-      label: 'pros'
-    });
-    const cons = new QuestionTextarea({
-      key: 'cons',
-      label: 'cons'
-    });
-    const components = new QuestionTextbox({
-      key: 'components',
-      label: 'components'
-    });
-    const alternatives = new QuestionTextbox({
-      key: 'alternatives',
-      label: 'alternatives'
-    });
-    const references = new QuestionTextarea({
-      key: 'references',
-      label: 'references'
-    });
-    const questions: QuestionBase<any>[] = [
-      nameTextbox,
-      tagsTextbox,
-      spiritTextbox,
-      background,
-      motivation,
-      pros,
-      cons,
-      components,
-      alternatives,
-      references
-      // new QuestionDropdown({
-      //   key: 'brave',
-      //   label: 'Bravery Rating',
-      //   options: [
-      //     {key: 'solid',  value: 'Solid'},
-      //     {key: 'great',  value: 'Great'},
-      //     {key: 'good',   value: 'Good'},
-      //     {key: 'unproven', value: 'Unproven'}
-      //   ],
-      //   order: 3
-      // }),
-    ];
-
+  // 工厂模式
+  static dynamicFormFactory(type, name, required?) {
+    switch (type) {
+      case 'textbox':
+        return new QuestionTextbox({ // TODO 这里有一些因名称不对应而手动实现的映射，后期是不是可以减少？让数据结构一致
+          key: name, label: name,
+          required: !!required
+        });
+      case 'textarea':
+        return new QuestionTextarea({
+          key: name, label: name,
+          required: !!required
+        });
+    }
+  }
+  static getQuestionsFromSetting() {
+    const questions: QuestionBase<any>[] = QuestionSettings.map((q) => this.dynamicFormFactory(q.type, q.name, q.required));
     return questions.sort((a, b) => a.order - b.order);
+  }
+  static getQuestionValuesFromJson(json, questions: any[]) {
+    const result = JSON.parse(JSON.stringify(questions)); // deep clone
+    result.forEach((q) => {
+      q.value = json[q.key];
+    });
+    return result;
   }
 }

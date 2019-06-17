@@ -1,4 +1,4 @@
 <h2>Knowledge Editor</h2>
 <p>Ask these questions when you learning something new</p>
-
+<input type="file" id="input-file" (change)="importJSON($event.target.files)">
 <app-dynamic-form [questions]="questions"></app-dynamic-form>
