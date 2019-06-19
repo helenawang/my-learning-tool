@@ -10,27 +10,30 @@ export class QuestionService {
   // TODO get from a remote source of question metadata
   // TODO make asynchronous
   // 工厂模式
-  static dynamicFormFactory(type, name, required?) {
+  static dynamicFormFactory(type, name, required, description) {
     switch (type) {
       case 'textbox':
         return new QuestionTextbox({ // TODO 这里有一些因名称不对应而手动实现的映射，后期是不是可以减少？让数据结构一致
           key: name, label: name,
+          description: description,
           required: !!required
         });
       case 'textarea':
         return new QuestionTextarea({
           key: name, label: name,
+          description: description,
           required: !!required
         });
       case 'tags':
         return new QuestionTags({
           key: name, label: name,
+          description: description,
           required: !!required
         });
     }
   }
   static getQuestionsFromSetting() {
-    const questions: QuestionBase<any>[] = QuestionSettings.map((q) => this.dynamicFormFactory(q.type, q.name, q.required));
+    const questions: QuestionBase<any>[] = QuestionSettings.map((q) => this.dynamicFormFactory(q.type, q.name, q.required, q.description));
     return questions.sort((a, b) => a.order - b.order);
   }
   static getQuestionValuesFromJson(json, questions: any[]) {

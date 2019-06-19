@@ -9,11 +9,11 @@
     <div nz-col nzSpan="6">
       <button nz-button nzType="primary" type="submit" [disabled]="!form.valid">Save</button>
       <div *ngIf="payLoad" class="form-row">
-        <nz-alert
-          nzType="success"
-          nzMessage="Saved the following values"
-          nzDescription={{payLoad}}
-        ></nz-alert>
+        <textarea
+          nz-input
+          placeholder="output json"
+          [nzAutosize]="{ minRows: 5, maxRows: 20}"
+        >{{payLoad}}</textarea>
       </div>
     </div>
   </form>

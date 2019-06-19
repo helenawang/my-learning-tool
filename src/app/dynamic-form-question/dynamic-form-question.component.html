@@ -1,16 +1,16 @@
 <nz-form-item [formGroup]="form">
   <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="question.key">{{question.label}}</nz-form-label>
   <nz-form-control [nzSm]="14" [nzXs]="24" [ngSwitch]="question.controlType">
+    <h5>{{question.description}}</h5>
+
     <input nz-input name="question.key" *ngSwitchCase="'textbox'" [formControlName]="question.key"
       [id]="question.key" [type]="question.type">
-
     <nz-select name="question.key" *ngSwitchCase="'tags'" nzMode="tags" [(ngModel)]="listOfTagOptions"
                [nzTokenSeparators]="[',']" [id]="question.key" [formControlName]="question.key">
       <nz-option *ngFor="let opt of question.options" [nzLabel]="opt.key" [nzValue]="opt.key">
         {{opt.value}}
       </nz-option>
     </nz-select>
-    <!-- 如果要添加其他类型，需要在这里写？-->
     <textarea nz-input name="question.key" *ngSwitchCase="'textarea'" [formControlName]="question.key"
               [id]="question.key"></textarea>
   </nz-form-control>
