@@ -11,6 +11,6 @@
     </ul>
   </div>
   <div nz-col nzSpan="20">
-      <app-knowledge-card *ngIf="selectedKnowledge" [knowledge]="selectedKnowledge"></app-knowledge-card>
+      <app-knowledge-card *ngIf="selectedKnowledge" [knowledge]="selectedKnowledge" (updateKnowledge)="updateKnowledge($event)"></app-knowledge-card>
   </div>
 </div>

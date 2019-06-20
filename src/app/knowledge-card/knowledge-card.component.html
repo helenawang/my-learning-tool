@@ -1,34 +1,46 @@
-<h3>{{knowledge.name}}</h3>
-<p>
-  <nz-tag *ngFor="let t of knowledge.tags" [nzColor]="'geekblue'">{{t}}</nz-tag>
-</p>
-<ul>
-  <li>spirit(which I think the most important): {{knowledge.spirit}}</li>
-  <li>background: {{knowledge.background}}</li>
-  <li>motivation: {{knowledge.motivation}}</li>
-  <li>pros:
-    <ul>
-      <li *ngFor="let p of knowledge.pros">{{p}}</li>
-    </ul>
-  </li>
-  <li>cons:
-    <ul>
-      <li *ngFor="let c of knowledge.cons">{{c}}</li>
-    </ul>
-  </li>
-  <li>components:
-    <ul>
-      <li *ngFor="let c of knowledge.components">{{c}}</li>
-    </ul>
-  </li>
-  <li>alternatives:
-    <ul>
-      <li *ngFor="let c of knowledge.alternatives">{{c}}</li>
-    </ul>
-  </li>
-  <li>references:
-    <ol>
-      <li *ngFor="let r of knowledge.references">{{r}}</li>
-    </ol>
-  </li>
-</ul>
+<button (click)="edit()">Edit</button>
+<ng-container *ngIf="state == 'displaying'">
+  <h3>{{knowledge.name}}</h3>
+  <p>
+    <nz-tag *ngFor="let t of knowledge.tags" [nzColor]="'geekblue'">{{t}}</nz-tag>
+  </p>
+  <ul>
+    <li>spirit(which I think the most important): {{knowledge.spirit}}</li>
+    <li>background: {{knowledge.background}}</li>
+    <li>motivation: {{knowledge.motivation}}</li>
+    <li>pros:
+      <ul>
+        <li *ngFor="let p of knowledge.pros">{{p}}</li>
+      </ul>
+    </li>
+    <li>cons:
+      <ul>
+        <li *ngFor="let c of knowledge.cons">{{c}}</li>
+      </ul>
+    </li>
+    <li>components:
+      <ul>
+        <li *ngFor="let c of knowledge.components">{{c}}</li>
+      </ul>
+    </li>
+    <li>alternatives:
+      <ul>
+        <li *ngFor="let c of knowledge.alternatives">{{c}}</li>
+      </ul>
+    </li>
+    <li>references:
+      <ol>
+        <li *ngFor="let r of knowledge.references">{{r}}</li>
+      </ol>
+    </li>
+  </ul>
+
+  <textarea
+    nz-input
+    placeholder="json format"
+    [nzAutosize]="{ minRows: 5, maxRows: 20}"
+  >{{jsonKnowledge}}</textarea>
+</ng-container>
+<ng-container *ngIf="state == 'editing'">
+  <app-dynamic-form [questions]="questions" (saving)="saving($event)"></app-dynamic-form>
+</ng-container>
