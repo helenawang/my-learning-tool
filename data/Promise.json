@@ -1,0 +1,21 @@
+{
+  "knowledge": {
+    "name": "Promise",
+    "tags": [
+      "javascript",
+      "asynchronous"
+    ],
+    "spirit": "job queue",
+    "background": "callback is not enough",
+    "motivation": "",
+    "pros": [
+      "more accurate"
+    ],
+    "cons": null,
+    "components": null,
+    "alternatives": null,
+    "references": [
+
+    ]
+  }
+}
