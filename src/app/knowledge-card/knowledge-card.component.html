@@ -1,6 +1,6 @@
-<h4>{{knowledge.name}}</h4>
+<h3>{{knowledge.name}}</h3>
 <p>
-  <span *ngFor="let t of knowledge.tags">{{t}}</span>
+  <nz-tag *ngFor="let t of knowledge.tags" [nzColor]="'geekblue'">{{t}}</nz-tag>
 </p>
 <ul>
   <li>spirit(which I think the most important): {{knowledge.spirit}}</li>

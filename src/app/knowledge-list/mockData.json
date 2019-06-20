@@ -1,25 +1,77 @@
 {
-  "knowledgeList": [
+  "knowledgeLists": [
     {
-      "name": "Java Annotation",
-      "tags": [
-        "java",
-        "metadata"
-      ],
-      "spirit": "metadata?",
-      "background": "",
-      "motivation": "",
-      "pros": [
-        "coupled closely with code(compared to XML)[1]",
-        "defines a standard way of defining metadata in code[1]"
-      ],
-      "cons": [],
-      "components": [],
-      "alternatives": [
-        "XML(scenario: application wide constants/parameters)"
-      ],
-      "references": [
-        "https://dzone.com/articles/how-annotations-work-java"
+      "category": "Java",
+      "data": [
+        {
+          "name": "Java Annotation",
+          "tags": [
+            "java",
+            "metadata"
+          ],
+          "spirit": "metadata?",
+          "background": "",
+          "motivation": "",
+          "pros": [
+            "coupled closely with code(compared to XML)[1]",
+            "defines a standard way of defining metadata in code[1]"
+          ],
+          "cons": [],
+          "components": [],
+          "alternatives": [
+            "XML(scenario: application wide constants/parameters)"
+          ],
+          "references": [
+            "https://dzone.com/articles/how-annotations-work-java"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "JavaScript",
+      "data": [
+        {
+          "name": "回调",
+          "tags": [
+            "javascript",
+            "asynchronous"
+          ],
+          "spirit": "",
+          "background": "",
+          "motivation": "",
+          "pros": null,
+          "cons": [
+            "顺序的人脑计划和回调驱动的异步JS代码之间不匹配[1]",
+            "回调需要交给第三方库时的信任问题[2]"
+          ],
+          "components": null,
+          "alternatives": [
+            "Promise"
+          ],
+          "references": [
+            "You don't know JavaScript 中卷 P169",
+            "You don't know JavaScript 中卷 P171"
+          ]
+        },
+        {
+          "name": "Promise",
+          "tags": [
+            "javascript",
+            "asynchronous"
+          ],
+          "spirit": "job queue",
+          "background": "callback is not enough",
+          "motivation": "",
+          "pros": [
+            "more accurate"
+          ],
+          "cons": null,
+          "components": null,
+          "alternatives": null,
+          "references": [
+
+          ]
+        }
       ]
     }
   ]

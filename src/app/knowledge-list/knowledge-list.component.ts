@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Knowledge} from '../model/Knowledge';
+import {Knowledge, KnowledgeCategory} from '../model/Knowledge';
 // @ts-ignore
-import {knowledgeList} from './mockData.json';
+import {knowledgeLists} from './mockData.json';
 
 @Component({
   selector: 'app-knowledge-list',
@@ -9,11 +9,10 @@ import {knowledgeList} from './mockData.json';
   styleUrls: ['./knowledge-list.component.css']
 })
 export class KnowledgeListComponent implements OnInit {
-  knowledgeList: Knowledge[];
   constructor() { }
-
+  knowledgeLists: KnowledgeCategory[];
+  selectedKnowledge: any; // 当前选中的knowledge
   ngOnInit() {
-    this.knowledgeList = knowledgeList;
+    this.knowledgeLists = knowledgeLists;
   }
-
 }
