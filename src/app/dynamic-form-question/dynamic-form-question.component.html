@@ -5,7 +5,7 @@
 
     <input nz-input name="question.key" *ngSwitchCase="'textbox'" [formControlName]="question.key"
       [id]="question.key" [type]="question.type">
-    <nz-select name="question.key" *ngSwitchCase="'tags'" nzMode="tags" [(ngModel)]="listOfTagOptions"
+    <nz-select name="question.key" *ngSwitchCase="'tags'" nzMode="tags"
                [nzTokenSeparators]="[',']" [id]="question.key" [formControlName]="question.key">
       <nz-option *ngFor="let opt of question.options" [nzLabel]="opt.key" [nzValue]="opt.key">
         {{opt.value}}
