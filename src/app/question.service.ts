@@ -28,7 +28,8 @@ export class QuestionService {
         return new QuestionTags({
           key: name, label: name,
           description: description,
-          required: !!required
+          required: !!required,
+          value: []
         });
     }
   }

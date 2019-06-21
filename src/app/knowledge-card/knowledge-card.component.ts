@@ -31,4 +31,14 @@ export class KnowledgeCardComponent implements OnInit {
     this.state = 'displaying';
     this.updateKnowledge.emit(this.knowledge);
   }
+  // 给不同关键字的tag标不同的颜色
+  getTagColor(tag) {
+    if (tag.indexOf('old') > -1) {
+      return 'volcano';
+    } else if (tag === 'fresh') {
+      return 'cyan';
+    } else {
+      return 'geekblue';
+    }
+  }
 }

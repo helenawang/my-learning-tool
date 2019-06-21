@@ -34,17 +34,22 @@
           "name": "回调",
           "tags": [
             "javascript",
-            "asynchronous"
+            "asynchronous",
+            "old-fashion"
           ],
-          "spirit": "",
+          "spirit": "把自己将来要执行的代码传给第三方（异步操作的执行方），让第三方适时调用。",
           "background": "",
           "motivation": "",
-          "pros": null,
+          "pros": [
+            "兼容IE"
+          ],
           "cons": [
             "顺序的人脑计划和回调驱动的异步JS代码之间不匹配[1]",
             "回调需要交给第三方库时的信任问题[2]"
           ],
-          "components": null,
+          "components": [
+            "setTimeout这类hack"
+          ],
           "alternatives": [
             "Promise"
           ],
@@ -57,19 +62,22 @@
           "name": "Promise",
           "tags": [
             "javascript",
-            "asynchronous"
+            "asynchronous",
+            "fresh"
           ],
-          "spirit": "job queue",
+          "spirit": "job queue，控制反转",
           "background": "callback is not enough",
-          "motivation": "",
+          "motivation": "与回调相比，实现控制反转。\n不把自己将来要执行的程序（continuation）传给第三方，而是让第三方告诉我们它何时结束任务，接下来的控制权交由我们自己。[1]",
           "pros": [
             "more accurate"
           ],
-          "cons": null,
-          "components": null,
-          "alternatives": null,
+          "cons": [],
+          "components": [],
+          "alternatives": [
+            "回调"
+          ],
           "references": [
-
+            "You don't know JavaScript中卷 P178"
           ]
         }
       ]

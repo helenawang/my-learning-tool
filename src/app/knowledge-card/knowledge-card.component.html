@@ -2,7 +2,7 @@
   <button (click)="edit()">Edit</button>
   <h3>{{knowledge.name}}</h3>
   <p>
-    <nz-tag *ngFor="let t of knowledge.tags" [nzColor]="'geekblue'">{{t}}</nz-tag>
+    <nz-tag *ngFor="let t of knowledge.tags" [nzColor]="getTagColor(t)">{{t}}</nz-tag>
   </p>
   <ul>
     <li>spirit(which I think the most important): {{knowledge.spirit}}</li>
