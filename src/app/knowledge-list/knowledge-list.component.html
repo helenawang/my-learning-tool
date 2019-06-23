@@ -1,7 +1,6 @@
-<h2>This is the knowledgeForm list</h2>
-<div nz-row>
-  <div nz-col nzSpan="4">
-    <ul nz-menu [nzMode]="'inline'" style="width: 240px;">
+<nz-layout>
+  <nz-sider [nzWidth]="200" style="background:#fff">
+    <ul nz-menu [nzMode]="'inline'">
       <li nz-submenu *ngFor="let list of knowledgeLists">
         <span title><i nz-icon type="mail"></i>{{list.category}}</span>
         <ul>
@@ -9,8 +8,11 @@
         </ul>
       </li>
     </ul>
-  </div>
-  <div nz-col nzSpan="20">
+  </nz-sider>
+
+  <nz-layout>
+    <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
       <app-knowledge-card *ngIf="selectedKnowledge" [knowledge]="selectedKnowledge" (updateKnowledge)="updateKnowledge($event)"></app-knowledge-card>
-  </div>
-</div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

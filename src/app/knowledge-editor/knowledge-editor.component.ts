@@ -11,6 +11,7 @@ import {QuestionService} from '../question.service';
 export class KnowledgeEditorComponent implements OnInit {
   questions: any[];
   formGroup: FormGroup;
+  importApproach = 0; // 哪种导入方式,0: 文件，1：粘贴
   constructor(private formBuilder: FormBuilder, qs: QuestionService) {
     this.questions = QuestionService.getQuestionsFromSetting();
   }

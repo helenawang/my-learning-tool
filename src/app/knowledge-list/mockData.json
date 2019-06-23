@@ -79,6 +79,21 @@
           "references": [
             "You don't know JavaScript中卷 P178"
           ]
+        },
+        {
+          "name": "RxJS",
+          "tags": [
+            "events",
+            "reactive programming"
+          ],
+          "spirit": "",
+          "background": "",
+          "motivation": "functional approach",
+          "pros": [],
+          "cons": [],
+          "components": [],
+          "alternatives": [],
+          "references": []
         }
       ]
     }

@@ -1,9 +1,20 @@
-<p>Ask these questions when you learning something new</p>
-<form [formGroup]="formGroup">
-  导入已有内容
-  方法1-本地json文件：<input type="file" id="input-file" (change)="importJSONFromFile($event.target.files)">
-  方法2-粘贴json到文本框：
-  <textarea [formControlName]="'input_textarea'"></textarea>
-  <button (click)="importJSONFromTextarea()">解析</button>
-</form>
-<app-dynamic-form [questions]="questions"></app-dynamic-form>
+<nz-layout>
+  <nz-sider [nzWidth]="300" style="background:#fff; padding: 24px;">
+    <form [formGroup]="formGroup">
+      <nz-card style="width: 100%;" nzTitle="导入已有内容">
+        <nz-divider nzText="打开本地文件" nzOrientation="left"></nz-divider>
+          <input nz-input nz-button nzType="primary" type="file" id="input-file" (change)="importJSONFromFile($event.target.files)">
+        <nz-divider nzText="或者"></nz-divider>
+        <nz-divider nzText="粘贴到文本框" nzOrientation="left"></nz-divider>
+        <textarea nz-input [formControlName]="'input_textarea'"></textarea>
+        <button nz-button nzType="primary" (click)="importJSONFromTextarea()">解析</button>
+      </nz-card>
+    </form>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
+      <app-dynamic-form [questions]="questions"></app-dynamic-form>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

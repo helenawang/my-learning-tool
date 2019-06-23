@@ -1,5 +1,5 @@
 <ng-container *ngIf="state == 'displaying'">
-  <button (click)="edit()">Edit</button>
+  <button nz-button nzType="primary" (click)="edit()">Edit</button>
   <h3>{{knowledge.name}}</h3>
   <p>
     <nz-tag *ngFor="let t of knowledge.tags" [nzColor]="getTagColor(t)">{{t}}</nz-tag>
@@ -35,8 +35,7 @@
     </li>
   </ul>
 
-  <textarea
-    nz-input
+  <textarea nz-input
     placeholder="json format"
     [nzAutosize]="{ minRows: 5, maxRows: 20}"
   >{{jsonKnowledge}}</textarea>
