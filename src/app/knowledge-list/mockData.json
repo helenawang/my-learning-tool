@@ -91,8 +91,30 @@
           "motivation": "functional approach",
           "pros": [],
           "cons": [],
-          "components": [],
+          "components": [
+            "Observable",
+            "Observer",
+            " Schedulers",
+            "Subjects"
+          ],
           "alternatives": [],
+          "references": []
+        },
+        {
+          "name": "Observable",
+          "tags": [
+            "asynchronous",
+            "iterable"
+          ],
+          "spirit": "",
+          "background": "",
+          "motivation": "把iterable引入asyncrhonous，改进Promise只能传递单次值的特性",
+          "pros": [],
+          "cons": [],
+          "components": [],
+          "alternatives": [
+            "Promise"
+          ],
           "references": []
         }
       ]

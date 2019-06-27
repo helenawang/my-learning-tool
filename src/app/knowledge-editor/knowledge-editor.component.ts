@@ -9,13 +9,15 @@ import {QuestionService} from '../question.service';
   providers: [QuestionService]
 })
 export class KnowledgeEditorComponent implements OnInit {
-  questions: any[];
+  questions = [];
   formGroup: FormGroup;
   importApproach = 0; // 哪种导入方式,0: 文件，1：粘贴
-  constructor(private formBuilder: FormBuilder, qs: QuestionService) {
-    this.questions = QuestionService.getQuestionsFromSetting();
+  constructor(private formBuilder: FormBuilder, private qs: QuestionService) {
   }
   ngOnInit() {
+    this.qs.getQuestionsFromSetting().then(data => {
+      this.questions = data;
+    });
     this.formGroup = this.formBuilder.group({
       input_textarea: ['']
     });
@@ -25,13 +27,13 @@ export class KnowledgeEditorComponent implements OnInit {
     const file = files[0];
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
-      this.questions = QuestionService.getQuestionValuesFromJson(JSON.parse(e.target['result'])['knowledge'], this.questions);
+      this.questions = this.qs.getQuestionValuesFromJson(JSON.parse(e.target['result'])['knowledge'], this.questions);
     };
     fileReader.readAsText(file);
   }
   // 从输入框中读取JSON
   importJSONFromTextarea() {
     const value = this.formGroup.value.input_textarea;
-    this.questions = QuestionService.getQuestionValuesFromJson(JSON.parse(value)['knowledge'], this.questions);
+    this.questions = this.qs.getQuestionValuesFromJson(JSON.parse(value)['knowledge'], this.questions);
   }
 }
