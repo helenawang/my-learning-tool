@@ -1,10 +1,10 @@
 <nz-layout>
   <nz-sider [nzWidth]="200" style="background:#fff">
     <ul nz-menu [nzMode]="'inline'">
-      <li nz-submenu *ngFor="let list of knowledgeLists">
-        <span title><i nz-icon type="mail"></i>{{list.category}}</span>
+      <li nz-submenu *ngFor="let c of categoryList" [(nzOpen)]="c == selectedCategory" (nzOpenChange)="selectCategory(c)">
+        <span title><i nz-icon type="mail"></i>{{c.name}}</span>
         <ul>
-          <li nz-menu-item *ngFor="let k of list.data" (click)="selectedKnowledge = k">{{k.name}}</li>
+          <li nz-menu-item *ngFor="let k of knowledgeList" (click)="selectedKnowledge = k">{{k.name}}</li>
         </ul>
       </li>
     </ul>

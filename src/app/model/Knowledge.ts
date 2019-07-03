@@ -13,9 +13,16 @@ export interface Knowledge {
 }
 // 知识分类（左侧一级）
 export interface KnowledgeCategory {
-  category: string;
-  data: Knowledge[];
+  name: string;
+  count: number; // 分类下的知识数
+  icon: string;
+  // data: Knowledge[];
 }
+export const Categories: KnowledgeCategory[] = [
+  {name: 'html', count: 10, icon: 'ant-code'},
+  {name: 'css', count: 5, icon: 'ant-credit-card'},
+  {name: 'javascript', count: 20, icon: 'ant-apple'}
+];
 // 对于问题项的配置
 export const QuestionSettings = [
   {type: 'textbox', name: 'name', required: true,

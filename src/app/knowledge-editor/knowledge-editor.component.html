@@ -14,7 +14,13 @@
 
   <nz-layout>
     <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
-      <app-dynamic-form [questions]="questions"></app-dynamic-form>
+      <nz-select style="width: 200px;"
+                 nzShowSearch nzAllowClear nzPlaceHolder="选择分类"
+                 [compareWith]="compareFn"
+                 [(ngModel)]="chosenCategory">
+        <nz-option *ngFor="let o of categories" nzCustomContent nzLabel="{{o.name}}" [nzValue]="o">{{o.name}}</nz-option>
+      </nz-select>
+      <app-dynamic-form [questions]="questions" (saving)="addKnowledge($event)"></app-dynamic-form>
     </nz-content>
   </nz-layout>
 </nz-layout>

@@ -9,14 +9,20 @@ import {QuestionService} from '../question.service';
   providers: [QuestionService]
 })
 export class KnowledgeCardComponent implements OnInit {
-  @Input()knowledge: Knowledge;
+  _knowledge: Knowledge;
+  @Input() set knowledge(k) {
+    this._knowledge = k;
+    this.jsonKnowledge = JSON.stringify(k);
+  }
+  get knowledge() {
+    return this._knowledge;
+  }
   questions;
   jsonKnowledge;
   state = 'displaying';
   constructor(private qs: QuestionService) { }
   @Output() updateKnowledge = new EventEmitter();
   ngOnInit() {
-    this.jsonKnowledge = JSON.stringify(this.knowledge);
     this.qs.getQuestionsFromSetting().then(data => {
       this.questions = data;
     });

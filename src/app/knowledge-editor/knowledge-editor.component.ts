@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {QuestionService} from '../question.service';
+import {Categories, KnowledgeCategory} from '../model/Knowledge';
 
 @Component({
   selector: 'app-knowledge-editor',
@@ -11,10 +12,17 @@ import {QuestionService} from '../question.service';
 export class KnowledgeEditorComponent implements OnInit {
   questions = [];
   formGroup: FormGroup;
-  importApproach = 0; // 哪种导入方式,0: 文件，1：粘贴
+  categories: KnowledgeCategory[];
+  importApproach = 0;
+  chosenCategory: KnowledgeCategory;
+  compareFn = (o1, o2) => o1 && o2 && o1.name === o2.name;
+  // 选中的category
+
+  // 哪种导入方式,0: 文件，1：粘贴
   constructor(private formBuilder: FormBuilder, private qs: QuestionService) {
   }
   ngOnInit() {
+    this.categories = Categories;
     this.qs.getQuestionsFromSetting().then(data => {
       this.questions = data;
     });
@@ -35,5 +43,9 @@ export class KnowledgeEditorComponent implements OnInit {
   importJSONFromTextarea() {
     const value = this.formGroup.value.input_textarea;
     this.questions = this.qs.getQuestionValuesFromJson(JSON.parse(value)['knowledge'], this.questions);
+  }
+
+  addKnowledge(knowledge: any) {
+    console.log('新的knowledge', this.chosenCategory.name, knowledge);
   }
 }

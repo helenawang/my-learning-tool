@@ -1,7 +1,7 @@
 {
   "knowledgeLists": [
     {
-      "category": "Java",
+      "category": "html",
       "data": [
         {
           "name": "Java Annotation",
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "category": "JavaScript",
+      "category": "javascript",
       "data": [
         {
           "name": "回调",
