@@ -35,7 +35,7 @@ export class KnowledgeCardComponent implements OnInit {
   }
   // 编辑结束，保存查看
   saving(value) {
-    this.knowledge = value;
+    Object.assign(this.knowledge, value); // 把docId保留下来
     this.jsonKnowledge = JSON.stringify(this.knowledge);
     // 目前还是得手工持久化。。。
     this.state = 'displaying';

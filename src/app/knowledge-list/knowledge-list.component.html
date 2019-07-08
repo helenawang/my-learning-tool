@@ -2,7 +2,7 @@
   <nz-sider [nzWidth]="200" style="background:#fff">
     <ul nz-menu [nzMode]="'inline'">
       <li nz-submenu *ngFor="let c of categoryList" [(nzOpen)]="c == selectedCategory" (nzOpenChange)="selectCategory(c)">
-        <span title><i nz-icon type="mail"></i>{{c.name}}</span>
+        <span title><i nz-icon nzType="{{c.icon}}" nzTheme="fill"></i>{{c.name}}</span>
         <ul>
           <li nz-menu-item *ngFor="let k of knowledgeList" (click)="selectedKnowledge = k">{{k.name}}</li>
         </ul>

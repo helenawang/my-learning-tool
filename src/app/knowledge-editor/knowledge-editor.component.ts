@@ -42,10 +42,12 @@ export class KnowledgeEditorComponent implements OnInit {
   // 从输入框中读取JSON
   importJSONFromTextarea() {
     const value = this.formGroup.value.input_textarea;
-    this.questions = this.qs.getQuestionValuesFromJson(JSON.parse(value)['knowledge'], this.questions);
+    this.questions = this.qs.getQuestionValuesFromJson(JSON.parse(value), this.questions);
   }
 
   addKnowledge(knowledge: any) {
-    console.log('新的knowledge', this.chosenCategory.name, knowledge);
+    this.qs.addNewKnowledgeToES(this.chosenCategory, knowledge).then((res) => {}, (err) => {
+      console.log(err);
+    });
   }
 }

@@ -10,6 +10,7 @@ export interface Knowledge {
   components: string[];
   alternatives: string[]; // 此处先不展开，只记录名称，后续可增加引用
   references: string[]; // 参考资料
+  docId?: string; // 写入es时自动生成的
 }
 // 知识分类（左侧一级）
 export interface KnowledgeCategory {
@@ -19,9 +20,10 @@ export interface KnowledgeCategory {
   // data: Knowledge[];
 }
 export const Categories: KnowledgeCategory[] = [
-  {name: 'html', count: 10, icon: 'ant-code'},
-  {name: 'css', count: 5, icon: 'ant-credit-card'},
-  {name: 'javascript', count: 20, icon: 'ant-apple'}
+  {name: 'html', count: 10, icon: 'html5'},
+  {name: 'css', count: 5, icon: 'layout'},
+  {name: 'javascript', count: 20, icon: 'interaction'},
+  {name: 'browser', count: 20, icon: 'chrome'}
 ];
 // 对于问题项的配置
 export const QuestionSettings = [
