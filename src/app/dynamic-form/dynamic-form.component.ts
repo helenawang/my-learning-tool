@@ -24,7 +24,6 @@ export class DynamicFormComponent {
   constructor(private qcs: QuestionControlService) { }
   onSubmit() {
     this.payLoad = JSON.stringify(this.form.value);
-    // TODO 暂时只当个JSON生成器来用啦，生成后手动复制粘贴到一个位置，手动实现持久化。
     this.saving.emit(this.form.value);
   }
 }

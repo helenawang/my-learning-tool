@@ -1,7 +1,0 @@
-div {
-  border: black solid 1px;
-}
-#virtual-table div {
-  display: inline-block;
-  width: 50%;
-}

@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-widgets';
   firstNavs = [
     {name: '已有的knowledge', routerLink: '/knowledge-list'},
     {name: '创建一个新的knowledge', routerLink: '/knowledge-editor'}

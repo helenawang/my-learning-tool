@@ -4,7 +4,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { VirtualTableComponent } from './virtual-table/virtual-table.component';
 import { KnowledgeCardComponent } from './knowledge-card/knowledge-card.component';
 import { KnowledgeListComponent } from './knowledge-list/knowledge-list.component';
 import { KnowledgeEditorComponent } from './knowledge-editor/knowledge-editor.component';
@@ -21,7 +20,6 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    VirtualTableComponent,
     KnowledgeCardComponent,
     KnowledgeListComponent,
     KnowledgeEditorComponent,

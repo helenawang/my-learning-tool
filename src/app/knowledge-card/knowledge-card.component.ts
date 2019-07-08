@@ -33,11 +33,10 @@ export class KnowledgeCardComponent implements OnInit {
     this.questions = this.qs.getQuestionValuesFromJson(this.knowledge, this.questions);
     this.state = 'editing';
   }
-  // 编辑结束，保存查看
+  // 编辑结束，保存查看 TODO 左侧栏在编辑模式下是否该禁用，还是试图切换时提示是否保存or暂存？
   saving(value) {
     Object.assign(this.knowledge, value); // 把docId保留下来
     this.jsonKnowledge = JSON.stringify(this.knowledge);
-    // 目前还是得手工持久化。。。
     this.state = 'displaying';
     this.updateKnowledge.emit(this.knowledge);
   }

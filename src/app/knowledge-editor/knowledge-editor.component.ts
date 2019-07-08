@@ -13,10 +13,8 @@ export class KnowledgeEditorComponent implements OnInit {
   questions = [];
   formGroup: FormGroup;
   categories: KnowledgeCategory[];
-  importApproach = 0;
   chosenCategory: KnowledgeCategory;
   compareFn = (o1, o2) => o1 && o2 && o1.name === o2.name;
-  // 选中的category
 
   // 哪种导入方式,0: 文件，1：粘贴
   constructor(private formBuilder: FormBuilder, private qs: QuestionService) {

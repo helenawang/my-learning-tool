@@ -3,9 +3,11 @@ import {QuestionTextbox} from './model/question-textbox';
 import {QuestionTextarea} from './model/question-textarea';
 import {QuestionTags} from './model/question-tags';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import {RELEASE_BASE_URL} from './config/urls';
 
 @Injectable()
 export class QuestionService {
+  private baseURL = RELEASE_BASE_URL;
   constructor(private http: HttpClient) {}
   // 工厂模式
   static dynamicFormFactory(type, name, required, description) {
@@ -39,7 +41,7 @@ export class QuestionService {
   }
   // I appreciate this function, elegant and clear
   async getQuestionsFromSetting() {
-    const result = await this.http.get('http://localhost:8080/questions/all').toPromise();
+    const result = await this.http.get(`${this.baseURL}/questions/all`).toPromise();
     return this.constructQuestions(result);
   }
   getQuestionValuesFromJson(json, questions: any[]) {
@@ -52,15 +54,15 @@ export class QuestionService {
   // 把文档更新写入Elasticsearch
   updateKnowledgeToES(category, updateK) {
     const options = {params: new HttpParams().set('category', category.name).set('docId', updateK.docId)}; // 此时是更新文档，必然已有id
-    return this.http.post(`http://localhost:8080/knowledge/update`, updateK, options).toPromise();
+    return this.http.post(`${this.baseURL}/knowledge/update`, updateK, options).toPromise();
     // TODO 目前只在es保存最新版本，及版本号，不保留历史版本
   }
   getAllDocsOfIndex(category) {
     const options = category ? { params: new HttpParams().set('category', category.name) } : {}; // 设置参数
-    return this.http.get(`http://localhost:8080/knowledge/list`, options).toPromise();
+    return this.http.get(`${this.baseURL}/knowledge/list`, options).toPromise();
   }
   addNewKnowledgeToES(category, newK) {
     const options = {params: new HttpParams().set('category', category.name)};
-    return this.http.post(`http://localhost:8080/knowledge/add`, newK, options).toPromise();
+    return this.http.post(`${this.baseURL}/knowledge/add`, newK, options).toPromise();
   }
 }

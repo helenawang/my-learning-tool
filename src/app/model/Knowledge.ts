@@ -2,7 +2,7 @@
 export interface Knowledge {
   name: string;
   tags: string[]; // 先不做category，而把语言之类的先做成tag，后续可能会增加category
-  spirit: string; // 核心思想
+  spirit: string;
   background: string;
   motivation: string;
   pros: string[];
@@ -17,35 +17,12 @@ export interface KnowledgeCategory {
   name: string;
   count: number; // 分类下的知识数
   icon: string;
-  // data: Knowledge[];
 }
+// TODO 现在分类是写死在前端的
 export const Categories: KnowledgeCategory[] = [
   {name: 'html', count: 10, icon: 'html5'},
   {name: 'css', count: 5, icon: 'layout'},
   {name: 'javascript', count: 20, icon: 'interaction'},
   {name: 'browser', count: 20, icon: 'chrome'}
 ];
-// 对于问题项的配置
-export const QuestionSettings = [
-  {type: 'textbox', name: 'name', required: true,
-    description: '惯用名称'},
-  {type: 'tags', name: 'tags',
-    description: '标签（回车分隔）'},
-  {type: 'textbox', name: 'spirit',
-    description: '精髓'},
-  {type: 'textarea', name: 'background',
-    description: '这个技术出现的背景'},
-  {type: 'textarea', name: 'motivation',
-    description: '初衷和想要达到什么样的目标或是要解决什么样的问题'},
-  {type: 'tags', name: 'pros',
-    description: '优势'},
-  {type: 'tags', name: 'cons',
-    description: '劣势'},
-  {type: 'tags', name: 'components',
-    description: '组成部分'},
-  {type: 'tags', name: 'alternatives',
-    description: '已有的实现和它之间的对比'},
-  {type: 'tags', name: 'references',
-    description: '参考文献'},
-];
-// TODO 我觉得后面几项应该设计为lists，支持回车追加一条，目前只是用tags
+// TODO 我觉得后面几项question应该设计为lists，支持回车追加一条，目前只是用tags
