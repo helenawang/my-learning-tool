@@ -1,27 +1,24 @@
-# MyWidgets
+# MyLearningTool
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
+This repository is the front end part of my learning-tool project.
 
-## Development server
+## Motivation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The idea of building such a tool came from [the column article(左耳听风-97 | 高效学习：深度，归纳和坚持实践)](https://time.geekbang.org/column/article/14360) I subscribed (it's written in Chinese).
+The author proposed a "learning template", which I think will benefit me a lot.
+The template consists of several questions he suggests you ask when learning something new, such as, the background & motivation | alternatives | pros & cons(trade-off) of the technology.
+Then I thought, why not build a tool with that template so that you can ask those questions by "fill out forms" and manage all your notes like a knowledge base? Then I built this project.
 
-## Code scaffolding
+These are two screenshots about what the user interface looks like:
+>The editor
+![screenshot1](./src/assets/img/screenshot-editor.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+> The list
+![screenshot2](./src/assets/img/screenshot-list.png)
 
-## Build
+## Contribute
+If you have some suggestions, open an issue or email me at helnawang@hotmail.com.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Dependencies
+* [Angular](https://angular.io)
+* [NG-ZORRO(Ant Design of Angular)](https://ng.ant.design/docs/introduce/en)
