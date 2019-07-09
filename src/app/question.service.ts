@@ -3,11 +3,12 @@ import {QuestionTextbox} from './model/question-textbox';
 import {QuestionTextarea} from './model/question-textarea';
 import {QuestionTags} from './model/question-tags';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {RELEASE_BASE_URL} from './config/urls';
+import {DEBUG_BASE_URL, RELEASE_BASE_URL} from './config/urls';
 
 @Injectable()
 export class QuestionService {
   private baseURL = RELEASE_BASE_URL;
+  // private baseURL = DEBUG_BASE_URL;
   constructor(private http: HttpClient) {}
   // 工厂模式
   static dynamicFormFactory(type, name, required, description) {
@@ -51,18 +52,22 @@ export class QuestionService {
     });
     return result;
   }
-  // 把文档更新写入Elasticsearch
+  /* 所有index都加上knowledge-前缀，便于kibana创建index-pattern*/
+  // 把已有doc的更新写入Elasticsearch
   updateKnowledgeToES(category, updateK) {
-    const options = {params: new HttpParams().set('category', category.name).set('docId', updateK.docId)}; // 此时是更新文档，必然已有id
+    const options = {params: new HttpParams().set('category', `knowledge-${category.name}`).set('docId', updateK.docId)}; // 此时是更新文档，必然已有id
     return this.http.post(`${this.baseURL}/knowledge/update`, updateK, options).toPromise();
     // TODO 目前只在es保存最新版本，及版本号，不保留历史版本
   }
+  // 获取category下的所有doc
   getAllDocsOfIndex(category) {
-    const options = category ? { params: new HttpParams().set('category', category.name) } : {}; // 设置参数
+    const options = category ? { params: new HttpParams().set('category', `knowledge-${category.name}`) } : {}; // 设置参数
     return this.http.get(`${this.baseURL}/knowledge/list`, options).toPromise();
   }
+  // 往指定category里添加新doc
+  // docId是elasticsearch自动生成的，并且只有更新一次后才会同步到_source里的docId字段。暂时没什么危害
   addNewKnowledgeToES(category, newK) {
-    const options = {params: new HttpParams().set('category', category.name)};
+    const options = {params: new HttpParams().set('category', `knowledge-${category.name}`)};
     return this.http.post(`${this.baseURL}/knowledge/add`, newK, options).toPromise();
   }
 }

@@ -29,13 +29,12 @@ export class KnowledgeCardComponent implements OnInit {
   }
   // 编辑这个knowledge
   edit() {
-    console.log(this.knowledge);
     this.questions = this.qs.getQuestionValuesFromJson(this.knowledge, this.questions);
     this.state = 'editing';
   }
   // 编辑结束，保存查看 TODO 左侧栏在编辑模式下是否该禁用，还是试图切换时提示是否保存or暂存？
   saving(value) {
-    Object.assign(this.knowledge, value); // 把docId保留下来
+    Object.assign(this.knowledge, value); // 把docId保留下来，注意上层需要判断是否是初次创建而选择保留/去掉docId
     this.jsonKnowledge = JSON.stringify(this.knowledge);
     this.state = 'displaying';
     this.updateKnowledge.emit(this.knowledge);
