@@ -3,12 +3,12 @@ import {QuestionTextbox} from './model/question-textbox';
 import {QuestionTextarea} from './model/question-textarea';
 import {QuestionTags} from './model/question-tags';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {DEBUG_BASE_URL, RELEASE_BASE_URL} from './config/urls';
+import {DEBUG_BASE_URL, RELEASE_BASE_URL} from './config/url';
 
 @Injectable()
 export class QuestionService {
-  private baseURL = RELEASE_BASE_URL;
-  // private baseURL = DEBUG_BASE_URL;
+  // private baseURL = RELEASE_BASE_URL;
+  private baseURL = DEBUG_BASE_URL;
   constructor(private http: HttpClient) {}
   // 工厂模式
   static dynamicFormFactory(type, name, required, description) {
